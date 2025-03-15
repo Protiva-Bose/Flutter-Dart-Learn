@@ -283,5 +283,82 @@ Recommended for large datasets.<br>
             ),
           ),
         ),
+![Screenshot 2025-03-15 231945](https://github.com/user-attachments/assets/e51135d9-4d8a-435c-9530-167f67df986a)
 
-        ![Screenshot 2025-03-15 231945](https://github.com/user-attachments/assets/e51135d9-4d8a-435c-9530-167f67df986a)
+## Another:
+##### import 'package:flutter/material.dart';
+
+##### void main() {
+#####   runApp( MyApp());
+##### }
+
+##### class MyApp extends StatelessWidget {
+#####    MyApp({Key? key}) : super(key: key);
+   
+#####  List<String> products =["University","campus","Class"];
+#####  List<String> productsDetails =["University name Niter","campus is beautiful","Class started in morning"];
+#####  List<int> id =[41,20,467];
+#####  @override
+#####  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
+            color: Colors.white,
+          ),
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.safety_check),
+              color: Colors.white,
+            ),
+          ],
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+          flexibleSpace: Image.asset(
+            "assets/images/yo.png",
+            fit: BoxFit.cover,
+          ),
+        ),
+        body: SafeArea(
+          child: Container(
+            child: ListView.builder(
+              itemCount: products.length, // Added a fixed item count
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    child: Text(products[index][0]),
+                    backgroundColor: Colors.blue.shade200,
+                  ),
+                  title: Text(products[index]),
+                  subtitle: Text(productsDetails[index]),
+                  trailing: Text(id[index].toString()),
+                  // tileColor: Colors.brown.shade100,
+                  onTap: () {},
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+#####  }
+##### }
+![Screenshot 2025-03-16 010139](https://github.com/user-attachments/assets/074d93ad-379e-46b7-9c73-a789de1d3b02)
+
