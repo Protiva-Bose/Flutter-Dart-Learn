@@ -70,8 +70,8 @@ Write Hello World under runApp():
           centerTitle: true,
           backgroundColor: Colors.lightBlue,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20),
+         ),
           flexibleSpace: Image.asset(
             "assets/images/yo.png",
             fit: BoxFit.cover,
@@ -98,3 +98,190 @@ Write Hello World under runApp():
 ##### }
 ### Output:
 ![Screenshot 2025-03-15 171519](https://github.com/user-attachments/assets/e959bbbd-12eb-4e4f-82d3-b1d225d0e632)
+
+## 2. Row,Column and Expanded widgets:
+Flutter provides Row and Column widgets for layout management, while Expanded helps adjust child widget sizes dynamically.
+#####  Row(
+ ##### mainAxisAlignment: MainAxisAlignment.spaceAround, // Spaces elements evenly
+ ##### children: [
+    Icon(Icons.star, size: 50),
+    Icon(Icons.favorite, size: 50),
+    Icon(Icons.thumb_up, size: 50),
+#####  ],
+##### )
+✅ Use when placing widgets side by side horizontally.<br>
+✅ Handles overflow issues by using Expanded or Flexible.
+
+##### Column(
+#####  mainAxisAlignment: MainAxisAlignment.center, // Centers children vertically
+#####  crossAxisAlignment: CrossAxisAlignment.start, // Aligns text to the left
+#####  children: [
+    Text("Hello"),
+    Text("Flutter"),
+    Text("World"),
+#####  ],
+##### )
+✅ Use when stacking widgets vertically.<br>
+✅ Ideal for forms, lists, and stacked UI layouts.
+
+#### The Expanded widget forces its child to take all available space inside Row or Column.But we can fixed the size what we want by using -> flex:2....
+##### Row(
+#####  children: [
+    Expanded(
+      child: Container(
+        color: Colors.red,
+        height: 100,
+      ),
+    ),
+    Expanded(
+      child: Container(
+        color: Colors.blue,
+        height: 100,
+      ),
+    ),
+#####  ],
+##### )
+![Screenshot 2025-03-15 221416](https://github.com/user-attachments/assets/034545f5-0bd5-46c7-98a1-820816b6c67e)
+### Another:
+##### Column(
+#####  children: [
+    Expanded(
+      child: Row(
+        children: [
+          Expanded(child: Container(color: Colors.red)),
+          Expanded(child: Container(color: Colors.green)),
+        ],
+      ),
+    ),
+    Expanded(
+      child: Container(color: Colors.blue),
+    ),
+ ##### ],
+##### )
+![Screenshot 2025-03-15 221558](https://github.com/user-attachments/assets/be34b36e-0740-4fa1-a03f-f7b9444265c8)
+
+ ###  Write code with flex :
+ ##### import 'package:flutter/material.dart';
+
+##### void main() {
+#####  runApp(const MyApp());
+##### }
+
+##### class MyApp extends StatelessWidget {
+#####  const MyApp({Key? key}) : super(key: key);
+
+#####  @override
+#####  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Expanded Flex Example')),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 2, // Takes 2 parts of the height
+              child: Container(color: Colors.orange),
+            ),
+            Expanded(
+              flex: 3, // Takes 3 parts of the height
+              child: Container(color: Colors.purple),
+            ),
+            Expanded(
+              flex: 1, // Takes 1 part of the height
+              child: Container(color: Colors.teal),
+            ),
+          ],
+        ),
+      ),
+    );
+#####  }
+##### }
+![Screenshot 2025-03-15 221939](https://github.com/user-attachments/assets/36e7224a-3aa9-4d00-80b7-ef385f792b3f)
+
+## 3.ListView and ListView Builder:
+#### 1️⃣ ListView Widget (Simple, but Less Efficient)<br>
+Loads all items at once, which can cause performance issues for large lists.<br>
+Suitable for small, static lists.<br>
+Uses a children property to hold all widgets inside a list.<br>
+
+### Some actions of the ListView widget:
+#### 1️⃣ itemExtent: 100,
+Sets a fixed height (or width for horizontal scrolling) for each item in the list.<br>
+Helps optimize performance by reducing calculations for dynamic item heights.<br>
+
+#### 2️⃣ reverse: false,
+Determines the direction of list scrolling:<br>
+true → List starts from the bottom and scrolls up.<br>
+false (default) → List starts from the top and scrolls down.<br>
+
+#### 3️⃣ scrollDirection: Axis.vertical,
+Defines whether the list scrolls vertically or horizontally:<br>
+Axis.vertical → Scrolls up & down (default).<br>
+Axis.horizontal → Scrolls left & right.<br>
+
+#### 4️⃣ shrinkWrap: true,
+If true, ListView only takes the required space instead of filling the entire screen.<br>
+Useful when ListView is inside another scrollable widget (e.g., Column or SingleChildScrollView).<br>
+
+### Code:
+ ##### body:
+        SafeArea(child:
+            Container(
+              child: ListView(
+                itemExtent: 100,
+                reverse: false,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(child: Icon(Icons.alarm_rounded),backgroundColor: Colors.brown.shade200,),
+                    title: Text("Title"),
+                    subtitle: Text("SubTitle of this title"),
+                    trailing: Icon(Icons.alarm_rounded),
+                    onTap: (){},
+                    tileColor: Colors.brown.shade100,
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(child: Icon(Icons.alarm_rounded),backgroundColor: Colors.blue.shade200,),
+                    title: Text("Title"),
+                    subtitle: Text("SubTitle of this title"),
+                    trailing: Icon(Icons.alarm_rounded),
+                    onTap: (){},
+                    tileColor: Colors.blue.shade100,
+                  ),
+                ],
+              ),
+            )
+      )
+
+![Screenshot 2025-03-15 225912](https://github.com/user-attachments/assets/b592fa0f-230d-4be3-949a-7a5a29269fe8)
+
+
+## ListView Builder:
+#### 2️⃣ ListView.builder (Efficient for Large Lists)
+Creates items dynamically as the user scrolls (better performance).<br>
+Uses itemBuilder to generate items on demand.<br>
+Recommended for large datasets.<br>
+
+##### body: SafeArea(
+          child: Container(
+            child: ListView.builder(
+              itemCount: 20, // Added a fixed item count
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.alarm_rounded),
+                    backgroundColor: Colors.brown.shade200,
+                  ),
+                  title: Text("Title $index"),
+                  subtitle: Text("Subtitle of item $index"),
+                  trailing: Icon(Icons.alarm_rounded),
+                  tileColor: Colors.brown.shade100,
+                  onTap: () {},
+                );
+              },
+            ),
+          ),
+        ),
+
+        ![Screenshot 2025-03-15 231945](https://github.com/user-attachments/assets/e51135d9-4d8a-435c-9530-167f67df986a)
