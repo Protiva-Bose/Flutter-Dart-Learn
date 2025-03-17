@@ -1,1 +1,82 @@
-# Explore it
+🎯 🛠️ Actions (Properties) of ListView
+These properties modify the behavior and appearance of a ListView:
+
+✨Property	Description:
+🗝️itemExtent	:Sets a fixed height/width for list items, improving performance.
+🗝️reverse	:If true, the list starts from the bottom and scrolls up. Default is false (top to bottom).
+🗝️scrollDirection	:Defines scroll direction: Axis.vertical (default) or Axis.horizontal.
+🗝️shrinkWrap	:If true, ListView takes only required space instead of filling the screen. Useful inside another scrollable widget.
+🗝️physics	:Controls scrolling behavior (e.g., disable scrolling with NeverScrollableScrollPhysics()).
+🗝️primary	:If true, this ListView is the primary scroll view.
+🗝️cacheExtent	:Preloads items beyond the visible area for smoother scrolling.
+🗝️padding	:Adds space inside the ListView.
+🗝️controller	:Used for programmatic scrolling and listening to scroll events.
+
+Ex:
+🎯
+ListView.builder(
+  itemCount: 10,
+  itemExtent: 80, // Fixed height for performance
+  scrollDirection: Axis.vertical, // Scrolls up/down
+  reverse: false, // Normal scroll direction
+  shrinkWrap: true, // Takes required space only
+  physics: BouncingScrollPhysics(), // Adds bounce effect
+  itemBuilder: (context, index) {
+    return ListTile(title: Text('Item $index'));
+  },
+);
+
+
+
+
+🎯 ListTile (Standard List Item)
+ListView(
+  children: [
+    ListTile(
+      leading: Icon(Icons.person),
+      title: Text('John Doe'),
+      subtitle: Text('Software Engineer'),
+      trailing: Icon(Icons.arrow_forward_ios),
+    ),
+    ListTile(
+      leading: Icon(Icons.person),
+      title: Text('Jane Smith'),
+      subtitle: Text('UI Designer'),
+      trailing: Icon(Icons.arrow_forward_ios),
+    ),
+  ],
+);
+
+
+
+🎯 🛠️ Properties of ListView.builder
+✨Property	Description :
+🗝️itemCount :	Defines the total number of items in the list.
+🗝️itemBuilder	:A function that dynamically builds each item. It takes (context, index) as parameters.
+🗝️scrollDirection	:Defines scroll direction: Axis.vertical (default) or Axis.horizontal.
+🗝️shrinkWrap	:If true, ListView takes only required space instead of filling the screen. Useful inside another scrollable widget.
+🗝️physics	:Controls scrolling behavior (e.g., BouncingScrollPhysics(), NeverScrollableScrollPhysics()).
+🗝️reverse	:If true, reverses scroll direction (list starts from bottom).
+🗝️itemExtent	:Sets a fixed height/width for each item (better performance for uniform lists).
+🗝️cacheExtent	:Controls how many items are preloaded beyond the visible area (default: 250.0).
+🗝️controller	:A ScrollController for programmatic scrolling.
+🗝️primary	:If true, this ListView is the primary scroll view in the widget tree.
+🗝️keyboardDismissBehavior	:Defines how the list dismisses the keyboard (onDrag, manual).
+
+Ex:
+🎯ListView.builder(
+  itemCount: 50, // Total number of items
+  itemExtent: 80, // Fixed height for performance
+  scrollDirection: Axis.vertical, // Default: Scrolls up & down
+  reverse: false, // Normal scroll direction
+  shrinkWrap: true, // Takes required space only
+  physics: BouncingScrollPhysics(), // Adds bounce effect
+  cacheExtent: 300, // Preloads additional items for smooth scrolling
+  itemBuilder: (context, index) {
+    return ListTile(
+      title: Text('Item $index'),
+      subtitle: Text('Subtitle for Item $index'),
+      leading: Icon(Icons.list),
+    );
+  },
+);
