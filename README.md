@@ -662,6 +662,397 @@ A TextField in Flutter is used to take user input. It's commonly used for forms,
 ##### 1. onChanged() event of TextField
 ##### 2. use Controller or ID to hook ***
 
+### First Process:
 
 
-        
+###### 🔐 import 'package:flutter/material.dart';
+
+###### void main() {
+######  runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget { // Change to StatefulWidget
+######  @override
+######  _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  var _uniname = ""; // Initialize variable
+
+ ###### void _updateText(val) {
+    setState(() {
+      _uniname = val; // Update state variable
+    });
+ ######  }
+  
+ ###### @override
+######  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+######  body: SafeArea(
+###### child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: ListView(
+            children: [
+              TextFormField(
+                onChanged: (val){
+              _updateText(val);
+                },
+                decoration: InputDecoration(
+                  labelText: "Versity Name",
+                  prefixIcon: Icon(Icons.verified_user_outlined),
+                  border: OutlineInputBorder()
+                ),
+              ),
+              Text("The versity name is $_uniname"),
+            ],
+          ),
+        ),
+        ),
+      ),
+    );
+######  }
+###### }
+
+
+![Screenshot 2025-03-17 235104](https://github.com/user-attachments/assets/18d6e764-c63b-4ebf-88cf-8e8cade6bdb3)
+
+
+
+### Second Process:
+
+
+🔐 ###### import 'package:flutter/material.dart';
+
+###### void main() {
+######  runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget {
+######  @override
+######  _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  final TextEditingController _uniController = TextEditingController();
+ ###### String _uniname = "";
+
+ ###### @override
+######  void initState() { // Corrected method name
+    super.initState();
+    _uniController.addListener(_updateText);
+ ###### }
+
+ ###### void _updateText() { // No parameter needed
+    setState(() {
+      _uniname = _uniController.text; // Get the latest text
+    });
+ ###### }
+
+ ###### @override
+ ###### Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+       body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: ListView(
+            children: [
+              TextFormField(
+                controller: _uniController,
+                onChanged: (val){
+              _updateText();
+                },
+                decoration: InputDecoration(
+                  labelText: "Versity Name",
+                  prefixIcon: Icon(Icons.verified_user_outlined),
+                  border: OutlineInputBorder()
+                ),
+              ),
+###### Text("The versity name is ${_uniController.text}"),
+            ],
+          ),
+        ),
+        ),
+      ),
+    );
+    }
+
+
+
+
+#### Third Process:
+
+###### 🔐 import 'package:flutter/material.dart';
+
+###### void main() {
+ ###### runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget {
+######  @override
+######  _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  final TextEditingController _uniController = TextEditingController();
+######  String _uniname = "";
+
+######  @override
+######  void initState() { // Corrected method name
+    super.initState();
+    _uniController.addListener(_updateText);
+######  }
+
+ ###### void _updateText() { // No parameter needed
+    // setState(() {
+    //   _uniname = _uniController.text; // Get the latest text
+    // });
+ ###### }
+
+ ###### @override
+ ###### Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.safety_check),
+              color: Colors.white,
+            ),
+          ],
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+          // flexibleSpace: Image.asset(
+          //   "assets/images/yo.png",
+          //   fit: BoxFit.cover,
+          // ),
+        ),
+
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(onPressed: (){},
+        child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.black,
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.blueAccent.shade100,
+          child: Row(
+            children:[
+               Column(
+                 children: [
+                   Icon(Icons.home),
+                   Text("Home"),
+                 ],
+               ),
+
+              SizedBox(
+                width: 140,
+              ),
+              Column(
+                children: [
+                  Icon(Icons.settings),
+                  Text("Settings"),
+                ],
+              ),
+              SizedBox(
+                width: 140,
+              ),
+              Column(
+                children: [
+                  Icon(Icons.shop),
+                  Text("Shop"),
+                ],
+              ),
+            ]
+
+
+          ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("protiva.bose06@gmail.com"),
+                accountEmail: Text("Done project with Protiva"),
+                currentAccountPicture: CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/yo.png"),
+                ),
+                otherAccountsPictures: [
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                ],
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Home"),
+                onTap: (){},
+              ),
+              ListTile(
+                leading: Icon(Icons.label),
+                title: Text("Label"),
+                onTap: (){},
+              ),
+            ],
+          ),
+               backgroundColor: Colors.white,
+        ),
+        body: SafeArea(
+          // child: ListView.builder(
+          //   itemCount: products.length,
+          //   itemBuilder: (context, index) {
+          //     return ListTile(
+          //       leading: CircleAvatar(
+          //         child: Text(products[index][0]),
+          //         backgroundColor: Colors.blue.shade200,
+          //       ),
+          //       title: Text(products[index]),
+          //       subtitle: Text(productsDetails[index]),
+          //       trailing: Text(id[index].toString()),
+          //       onTap: () {},
+          //     );
+          //   },
+          // ),
+          // child: Center(
+          //   child: Stack(
+          //     alignment: Alignment.center,
+          //     children: [
+          //       Container(
+          //         width: 300,
+          //         height: 200,
+          //         color: Colors.blueAccent,
+          //       ),
+          //       Positioned(
+          //         bottom: 0,
+          //         child:   Container(
+          //         width: 200,
+          //         height: 100,
+          //         color: Colors.grey,
+          //       ),),
+          //
+          //       Container(
+          //         width: 100,
+          //         height: 50,
+          //         color: Colors.purple,
+          //       )
+          //     ],
+          //   ),
+          // ),
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: ListView(
+            children: [
+              TextFormField(
+                controller: _uniController,
+              //   onChanged: (val){
+              // _updateText(val);
+              //   },
+                decoration: InputDecoration(
+                  labelText: "Versity Name",
+                  prefixIcon: Icon(Icons.verified_user_outlined),
+                  border: OutlineInputBorder()
+                ),
+              ),
+
+
+
+              SizedBox(height: 60),
+              Builder(
+                builder: (context) {
+                  return myBtn(context);
+                },
+              ),
+
+
+
+              // Text("The versity name is $_uniname"),
+              // Text("The versity name is ${_uniController.text}"),
+            ],
+          ),
+        ),
+        ),
+      ),
+    );
+    }
+######  OutlinedButton myBtn(BuildContext context){
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(minimumSize: const Size(200,50)),
+      onPressed: (){
+        Navigator.push(context,MaterialPageRoute(builder: (context){
+          return Details(uniname: _uniController.text,);
+        }),
+        );
+      },
+      child: Text("Submit the Form".toUpperCase(),
+        style: TextStyle(fontWeight: FontWeight.bold),),
+    );
+######  }
+###### }
+
+###### class Details extends StatelessWidget {
+######   Details({Key?key,required this.uniname}): super(key: key);
+
+
+######  String  uniname;
+
+
+
+######  @override
+######  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Details"),
+        leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back),
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView(
+          children: [
+            ListTile(
+
+              leading: Icon(Icons.account_balance_wallet_outlined),
+              title: Text("University name"),
+            )
+          ],
+        ),
+      )
+    );
+######  }
+###### }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
