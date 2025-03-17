@@ -362,3 +362,275 @@ Recommended for large datasets.<br>
 ##### }
 ![Screenshot 2025-03-16 010139](https://github.com/user-attachments/assets/074d93ad-379e-46b7-9c73-a789de1d3b02)
 
+## 4.Navigation Drawer:
+##### Navigation Drawer in Flutter
+A Navigation Drawer in Flutter is a slide-in panel (usually from the left) that provides navigation options for an app. It is commonly used to navigate between different sections or screens in an app.
+
+### .................
+  ###### @override
+######  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.safety_check),
+              color: Colors.white,
+            ),
+          ],
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+          // flexibleSpace: Image.asset(
+          //   "assets/images/yo.png",
+          //   fit: BoxFit.cover,
+          // ),
+        ),
+ ####       drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("protiva.bose06@gmail.com"),
+                accountEmail: Text("Done project with Protiva"),
+                currentAccountPicture: CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/yo.png"),
+                ),
+                otherAccountsPictures: [
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                ],
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Home"),
+                onTap: (){},
+              ),
+              ListTile(
+                leading: Icon(Icons.label),
+                title: Text("Label"),
+                onTap: (){},
+              ),
+            ],
+          ),
+###### backgroundColor: Colors.white,
+        ),
+        body: SafeArea(
+          child: ListView.builder(
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: CircleAvatar(
+                  child: Text(products[index][0]),
+                  backgroundColor: Colors.blue.shade200,
+                ),
+                title: Text(products[index]),
+                subtitle: Text(productsDetails[index]),
+                trailing: Text(id[index].toString()),
+                onTap: () {},
+              );
+            },
+          ),
+        ),
+      ),
+    );
+######  }
+###### }
+
+![Screenshot 2025-03-17 124921](https://github.com/user-attachments/assets/4f06250a-7c22-4037-ac95-4e76f2be78a4)
+![Screenshot 2025-03-17 125022](https://github.com/user-attachments/assets/8c8e1aae-f967-419b-9278-1b01042c0ff8)
+
+
+## 5.Floating Action Button:
+#### A Floating Action Button (FAB) is a circular button that floats above the UI, typically used for a primary action in an app (e.g., adding a new item, sending a message, etc.).It creates a custom widgets by adding multiple widgets.
+
+###### home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+              color: Colors.white,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.safety_check),
+              color: Colors.white,
+            ),
+          ],
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+          // flexibleSpace: Image.asset(
+          //   "assets/images/yo.png",
+          //   fit: BoxFit.cover,
+          // ),
+        ),
+
+###        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(onPressed: (){},
+        child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.black,
+        ),
+###        bottomNavigationBar: BottomAppBar(
+          color: Colors.blueAccent.shade100,
+          child:
+
+          Row(
+            children:[
+               Column(
+                 children: [
+                   Icon(Icons.home),
+                   Text("Home"),
+                 ],
+               ),
+
+              SizedBox(
+                width: 140,
+              ),
+              Column(
+                children: [
+                  Icon(Icons.settings),
+                  Text("Settings"),
+                ],
+              ),
+              SizedBox(
+                width: 140,
+              ),
+              Column(
+                children: [
+                  Icon(Icons.shop),
+                  Text("Shop"),
+                ],
+              ),
+            ]
+
+
+          ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("protiva.bose06@gmail.com"),
+                accountEmail: Text("Done project with Protiva"),
+                currentAccountPicture: CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/yo.png"),
+                ),
+                otherAccountsPictures: [
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                  CircleAvatar(
+                    foregroundImage: AssetImage("assets/images/yo.png"),
+                  ),
+                ],
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text("Home"),
+                onTap: (){},
+              ),
+              ListTile(
+                leading: Icon(Icons.label),
+                title: Text("Label"),
+                onTap: (){},
+              ),
+            ],
+          ),
+###### backgroundColor: Colors.white,
+        ),
+        body: SafeArea(
+          child: ListView.builder(
+            itemCount: products.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: CircleAvatar(
+                  child: Text(products[index][0]),
+                  backgroundColor: Colors.blue.shade200,
+                ),
+                title: Text(products[index]),
+                subtitle: Text(productsDetails[index]),
+                trailing: Text(id[index].toString()),
+                onTap: () {},
+              );
+            },
+          ),
+        ),
+      ),
+
+![Screenshot 2025-03-17 132029](https://github.com/user-attachments/assets/d46fb492-6c65-484d-a0d1-9054503ca65c)
+
+## 6.Stack and Positioned widgets:
+#### 1. Stack Widget
+The Stack widget places its children on top of each other. It's useful when you want to layer widgets, like images with text on top.
+
+#### 2. Positioned Widget
+The Positioned widget is used inside a Stack to place a widget at a specific position using top, left, right, or bottom properties.
+
+
+###### body: SafeArea(
+######  child: Center(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 300,
+                  height: 200,
+                  color: Colors.blueAccent,
+                ),
+                Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.grey,
+                ),
+                Container(
+                  width: 100,
+                  height: 50,
+                  color: Colors.purple,
+                )
+              ],
+            ),
+          ),
+
+        ),
+![Screenshot 2025-03-17 134839](https://github.com/user-attachments/assets/e4a60e47-a3fa-4c4b-854b-348a002aa68d)
+
+### Now uisng Positioned:
+ Positioned(
+                  bottom: 0,
+                  child:   Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.grey,
+                ),),
+
+![image](https://github.com/user-attachments/assets/9f07d91c-d420-456a-9628-781c8234e829)
+
+        
