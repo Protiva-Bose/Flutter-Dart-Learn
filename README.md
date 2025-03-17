@@ -4,6 +4,29 @@
 2.Setup Environment Variables.<br>
 3.Install Flutter and Dart plugins.<br>
 4.agree to all Licenses.<br>
+
+## There are two types of widgets:
+#### 1.Stateless widget:
+##### Image(Asset/Network)
+##### Icon(Material/FontAwesome)
+##### Container
+##### Button(Elavated/Outline)
+##### AppBar(Action Buttons)
+##### Row,Column,Expanded
+##### ListView
+##### ListView.builder()
+##### Navigation drawer
+##### Floating Action Button
+##### Stack
+
+#### 2.Stateful widget:
+##### 1.Flutter navigation
+##### 2.Radio Button
+##### 3.TextField(TextField/TextFormField)
+##### 4.CheckBox
+##### 5.DropDown
+##### 6.Form
+
 ## Here void main() -> It's the first gate which give
  the permission and let go inside flutter project.
 ### But it directly can't access the widgets.
@@ -623,7 +646,7 @@ The Positioned widget is used inside a Stack to place a widget at a specific pos
 ![Screenshot 2025-03-17 134839](https://github.com/user-attachments/assets/e4a60e47-a3fa-4c4b-854b-348a002aa68d)
 
 ### Now uisng Positioned:
- Positioned(
+###### Positioned(
                   bottom: 0,
                   child:   Container(
                   width: 200,
@@ -632,5 +655,13 @@ The Positioned widget is used inside a Stack to place a widget at a specific pos
                 ),),
 
 ![image](https://github.com/user-attachments/assets/9f07d91c-d420-456a-9628-781c8234e829)
+
+## 7.TextField:
+A TextField in Flutter is used to take user input. It's commonly used for forms, search bars, and login screens.Both TextField and TextFormField are used for user input in Flutter, but TextFormField offers more features for forms, like validation.
+#### Two ways to get data from TextField:
+##### 1. onChanged() event of TextField
+##### 2. use Controller or ID to hook ***
+
+
 
         
