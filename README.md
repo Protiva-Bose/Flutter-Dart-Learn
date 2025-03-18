@@ -1204,4 +1204,411 @@ enabled	           Whether the tile is interactive.
 https://github.com/user-attachments/assets/a1091e38-dfa7-4bb6-bf3f-4ea45937eaed
 
 
+## 8.RadioButton():
+#### There are two types to create it :
+#### 1.setState() to update    2. custom widget stateless => setState in this class
+### ✨ First Method: ( 1.setState() to update )
+### Code:
+###### import 'package:flutter/material.dart';
+
+#### enum ProductTypeEnum {Downloadable,Deliverable}
+
+
+###### void main() {
+ ###### runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget {
+######  @override
+######  _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  final TextEditingController _uniController = TextEditingController();
+######  String _uniname = "";
+
+
+######  bool? _isChecked,_listTileCheckBox = false;
+###### ProductTypeEnum? _productTypeEnum;
+
+######  @override
+######  void initState() {
+    super.initState();
+    _uniController.addListener(_updateText);
+######  }
+
+######  void _updateText() {
+    setState(() {
+      _uniname = _uniController.text;
+    });
+######  }
+
+######  @override
+######  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+        ),
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(20.0),
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: _uniController,
+                  decoration: InputDecoration(
+                    labelText: "University Name",
+                    prefixIcon: Icon(Icons.verified_user_outlined),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Checkbox(
+                      checkColor: Colors.white,
+                      activeColor: Colors.deepPurple,
+                      tristate: true,
+                      value: _isChecked,
+                      onChanged: (val) {
+                        setState(() {
+                          _isChecked = val;
+                        });
+                      },
+                    ),
+                    Text("I agree to the terms"),
+                    Expanded(  // Wrap CheckboxListTile inside Expanded
+                      child: CheckboxListTile(
+                        value: _listTileCheckBox,
+                        title: Text("Check",style: TextStyle(fontSize: 15),),
+                        onChanged: (val) {
+                          setState(() {
+                            _listTileCheckBox = val;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 20),
+                Text("The university name is: $_uniname"),
+
+
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(width: 10,),
+                        Radio<ProductTypeEnum>(
+                          value: ProductTypeEnum.Deliverable,
+                          groupValue: _productTypeEnum,
+                          onChanged: (val) {
+                            setState(() {
+                              _productTypeEnum = val;
+                            });
+                          },
+                        ),
+                        Text("Deliverable"), // Title for Radio
+                      ],
+                    ),
+                    RadioListTile<ProductTypeEnum>(
+                      title: Text(ProductTypeEnum.Downloadable.name),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      tileColor: Colors.deepPurple.shade100,// Title f
+                      dense: true,// or RadioListTile
+                      value: ProductTypeEnum.Downloadable,
+                      groupValue: _productTypeEnum,
+                      onChanged: (val) {
+                        setState(() {
+                          _productTypeEnum = val;
+                        });
+                      },
+                    ),
+                  ],
+                )
+
+
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+######  }
+###### }
+
+https://github.com/user-attachments/assets/c0f226e4-cdb9-4ba3-b1a3-4da5f3296b86
+
+### ✨ Second Method: ( 2. custom widget stateless => setState in this class )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 9.DropDown button:
+##### DropDownButton in Flutter:
+The DropdownButton widget in Flutter allows users to select an item from a list of options. It is commonly used in forms, settings, or when users need to make a selection from predefined choices.
+🔹 Properties of DropdownButton
+Property	Description
+items	A list of DropdownMenuItem widgets representing the options.
+value	The currently selected value.
+onChanged	A callback triggered when the user selects an item.
+hint	A widget that is displayed when no value is selected.
+disabledHint	A widget displayed when onChanged is null (Dropdown is disabled).
+style	Defines the text style of the dropdown items.
+icon	A custom widget to replace the default dropdown arrow.
+iconSize	The size of the dropdown arrow.
+isExpanded	If true, the dropdown takes the full width of its parent.
+underline	Defines the decoration (like an underline) for the dropdown.
+dropdownColor	The background color of the dropdown menu.
+borderRadius	Controls the roundness of the dropdown menu.
+
+### Code:
+###### import 'package:flutter/material.dart';
+###### import 'package:widgets_learn/my_radio_button.dart';
+
+###### enum ProductTypeEnum { Downloadable, Deliverable }
+
+###### void main() {
+######  runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget {
+######  @override
+ ###### _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  final TextEditingController _uniController = TextEditingController();
+######  String _uniname = "";
+
+
+
+
+
+
+###### _MyAppState(){
+######  _selectVal=_productSize[0];
+###### }
+ ###### final _productSize=["Small","Medium","Large","XL"];
+ ###### String _selectVal="small";
+
+
+
+
+
+
+
+
+######  bool? _isChecked, _listTileCheckBox = false;
+######  ProductTypeEnum? _productTypeEnum;
+
+######  @override
+ ###### void initState() {
+    super.initState();
+    _uniController.addListener(_updateText);
+######  }
+
+######  void _updateText() {
+    setState(() {
+      _uniname = _uniController.text;
+    });
+######  }
+
+######  @override
+######  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+        ),
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(20.0),
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: _uniController,
+                  decoration: InputDecoration(
+                    labelText: "University Name",
+                    prefixIcon: Icon(Icons.verified_user_outlined),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Checkbox(
+                      checkColor: Colors.white,
+                      activeColor: Colors.deepPurple,
+                      tristate: true,
+                      value: _isChecked,
+                      onChanged: (val) {
+                        setState(() {
+                          _isChecked = val;
+                        });
+                      },
+                    ),
+                    Text("I agree to the terms"),
+                    Expanded(
+                      // Wrap CheckboxListTile inside Expanded
+                      child: CheckboxListTile(
+                        value: _listTileCheckBox,
+                        title: Text(
+                          "Check",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        onChanged: (val) {
+                          setState(() {
+                            _listTileCheckBox = val;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Text("The university name is: $_uniname"),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Radio<ProductTypeEnum>(
+                          value: ProductTypeEnum.Deliverable,
+                          groupValue: _productTypeEnum,
+                          onChanged: (val) {
+                            setState(() {
+                              _productTypeEnum = val;
+                            });
+                          },
+                        ),
+                        Text("Deliverable"), // Title for Radio
+                      ],
+                    ),
+                    RadioListTile<ProductTypeEnum>(
+                      title: Text(ProductTypeEnum.Downloadable.name),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      tileColor: Colors.deepPurple.shade100, // Title f
+                      dense: true, // or RadioListTile
+                      value: ProductTypeEnum.Downloadable,
+                      groupValue: _productTypeEnum,
+                      onChanged: (val) {
+                        setState(() {
+                          _productTypeEnum = val;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+
+
+
+
+
+                SizedBox(height: 50,),
+
+
+                DropdownButton(
+                    value: _selectVal,
+                    items: _productSize.map((e) => DropdownMenuItem(child: Text(e),value: e,)
+
+                    ).toList(),
+                    onChanged: (val){
+                          setState(() {
+                            _selectVal=val as String;
+                          });
+                }),
+
+                SizedBox(height: 30,),
+
+
+                DropdownButtonFormField(
+                    value: _selectVal,
+                    items: _productSize.map((e) => DropdownMenuItem(child: Text(e),value: e,)
+
+                    ).toList(),
+                    onChanged: (val){
+                      setState(() {
+                        _selectVal=val as String;
+                      });
+                    },
+                    icon: Icon(Icons.arrow_drop_down_circle,
+                    color: Colors.deepPurple.shade700,),
+                  decoration: InputDecoration(
+                    labelText: "T-shirt Sizes",
+                    prefixIcon: Icon(Icons.accessibility_new_outlined,
+                    color: Colors.purple,),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+######  }
+###### }
+
+## Mainly used:
+###### final _productSize=["Small","Medium","Large","XL"];
+######  String _selectVal="small";
+
+
+###### DropdownButtonFormField(
+                    value: _selectVal,
+                    items: _productSize.map((e) => DropdownMenuItem(child: Text(e),value: e,)
+
+                    ).toList(),
+                    onChanged: (val){
+                      setState(() {
+                        _selectVal=val as String;
+                      });
+                    },
+                    icon: Icon(Icons.arrow_drop_down_circle,
+                    color: Colors.deepPurple.shade700,),
+                  decoration: InputDecoration(
+                    labelText: "T-shirt Sizes",
+                    prefixIcon: Icon(Icons.accessibility_new_outlined,
+                    color: Colors.purple,),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+
+
+
+
 
