@@ -1043,17 +1043,163 @@ A TextField in Flutter is used to take user input. It's commonly used for forms,
 
 
 
+## 7.CheckBox:(CheckBox/CheckBoxListTile)
+
+#### Properties of Checkbox
+##### Property	    Description
+value	             Boolean value (true for checked, false for unchecked).
+onChanged	         Callback function triggered when the checkbox is toggled.
+activeColor	       The color of the checkbox when checked.
+checkColor	        The color of the checkmark inside the checkbox.
+tristate	          Allows three states (true, false, and null).
+shape	             Customizes the shape of the checkbox.
+side	              Defines the border style of the checkbox.
 
 
+#### Properties of CheckboxListTile
+##### Property	     Description
+value	             Boolean value (true for checked, false for unchecked).
+onChanged	         Callback function triggered when toggled.
+title	             A widget for the main label (usually Text).
+subtitle	          A widget for additional description.
+isThreeLine	       If true, forces three lines of text.
+dense	             Reduces the height of the tile for compact layouts.
+controlAffinity   	Determines whether the checkbox is leading or trailing.
+activeColor	       The color of the checkbox when checked.
+checkColor	        The color of the checkmark inside the checkbox.
+tileColor	         Background color of the tile.
+shape	             Defines a custom shape for the tile.
+enabled	           Whether the tile is interactive.
 
 
+### Code:
+###### import 'package:flutter/material.dart';
+
+###### void main() {
+######  runApp(MyApp());
+###### }
+
+###### class MyApp extends StatefulWidget {
+######  @override
+######   _MyAppState createState() => _MyAppState();
+###### }
+
+###### class _MyAppState extends State<MyApp> {
+######  final TextEditingController _uniController = TextEditingController();
+######  String _uniname = "";
 
 
+######  bool? _isChecked,_listTileCheckBox = false;
 
 
+######  @override
+######  void initState() {
+    super.initState();
+    _uniController.addListener(_updateText);
+ ###### }
 
+######  void _updateText() {
+    setState(() {
+      _uniname = _uniController.text;
+    });
+######  }
 
+######  @override
+######  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "AppBar",
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+        ),
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.all(20.0),
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: _uniController,
+                  decoration: InputDecoration(
+                    labelText: "University Name",
+                    prefixIcon: Icon(Icons.verified_user_outlined),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Checkbox(
+                      checkColor: Colors.white,
+                      activeColor: Colors.deepPurple,
+                      tristate: true,
+                      value: _isChecked,
+                      onChanged: (val) {
+                        setState(() {
+                          _isChecked = val;
+                        });
+                      },
+                    ),
+                    Text("I agree to the terms"),
+                    Expanded(  // Wrap CheckboxListTile inside Expanded
+                      child: CheckboxListTile(
+                        value: _listTileCheckBox,
+                        title: Text("Check",style: TextStyle(fontSize: 15),),
+                        onChanged: (val) {
+                          setState(() {
+                            _listTileCheckBox = val;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
+                    ),
+                  ],
+                ),
 
+                SizedBox(height: 20),
+                Text("The university name is: $_uniname"),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+######  }
+###### }
+
+## Here main used :
+
+##### bool? _isChecked,_listTileCheckBox = false;.................. Under class _MyAppState extends State<MyApp> {.....}
+
+##### Checkbox(
+                      checkColor: Colors.white,
+                      activeColor: Colors.deepPurple,
+                      tristate: true,
+                      value: _isChecked,
+                      onChanged: (val) {
+                        setState(() {
+                          _isChecked = val;
+                        });
+                      },
+                    ),
+                    Text("I agree to the terms"),
+                    Expanded(  // Wrap CheckboxListTile inside Expanded
+                      child: CheckboxListTile(
+                        value: _listTileCheckBox,
+                        title: Text("Check",style: TextStyle(fontSize: 15),),
+                        onChanged: (val) {
+                          setState(() {
+                            _listTileCheckBox = val;
+                          });
+                        },
+                        controlAffinity: ListTileControlAffinity.leading,
+                      ),
+                    ),
+
+https://github.com/user-attachments/assets/a1091e38-dfa7-4bb6-bf3f-4ea45937eaed
 
 
 
