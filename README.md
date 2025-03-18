@@ -1583,6 +1583,15 @@ borderRadius	Controls the roundness of the dropdown menu.
 ######  }
 ###### }
 
+
+
+
+
+https://github.com/user-attachments/assets/28b46339-b6d2-4cb7-991a-2a53dfa0d4c8
+
+
+
+
 ## Mainly used:
 ###### final _productSize=["Small","Medium","Large","XL"];
 ######  String _selectVal="small";
@@ -1607,6 +1616,8 @@ borderRadius	Controls the roundness of the dropdown menu.
                     border: OutlineInputBorder(),
                   ),
                 ),
+
+
 
 
 
