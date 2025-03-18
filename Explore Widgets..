@@ -743,5 +743,63 @@ Default                Layout	Just a small interactive box.	                    
 
 
 🎯✨ RadioButton() /RadioListTile() /CustomRadioWidget() :
+1️⃣ Radio<T> Widget
+The Radio widget is a simple radio button that allows users to select one option from a group.
+
+🔹 Properties of Radio<T>
+   Property	                Description
+🔹value	                    The value that this radio button represents.
+🔹groupValue	              The currently selected value in the group.
+🔹onChanged	                A callback function when the user selects this radio button.
+🔹activeColor	              The color of the radio button when selected.
+🔹fillColor	                The color of the radio button when selected and unselected.
+🔹focusColor	              Color when the radio is in focus.
+🔹hoverColor	              Color when the radio is hovered over.
+🔹materialTapTargetSize   	Defines the tap target size.
+🔹splashRadius	            The radius of the splash effect when tapped.
+🔹visualDensity	            Adjusts the space taken by the radio.
+
+
+
+2️⃣ RadioListTile<T> Widget
+The RadioListTile is a combination of a radio button and a ListTile. It includes a title, subtitle, and can be tapped anywhere to select the radio option.
+
+🔹 Properties of RadioListTile<T>
+Property	Description
+🔹value	                    The value this radio button represents.
+🔹groupValue	              The currently selected value in the group.
+🔹onChanged	                A callback triggered when the user selects an option.
+🔹title	                    The primary text shown in the tile.
+🔹subtitle	                Secondary text below the title.
+🔹activeColor	              The color of the radio button when selected.
+🔹fillColor	                The color of the radio button in selected and unselected states.
+🔹dense	                    Reduces the height of the tile.
+🔹tileColor               	Background color of the tile.
+🔹selectedTileColor	        Background color when the tile is selected.
+🔹contentPadding	          Controls the padding inside the tile.
+🔹shape	                    Defines the shape of the tile (e.g., RoundedRectangleBorder).
+🔹visualDensity	            Adjusts the space taken by the tile.
+🔹controlAffinity	          Positioning of the radio button (leading, trailing).
+
+
+
+
+
+🎯✨DropDown button:
+🔹 Properties of DropdownButton
+🔹Property	             Description
+🔹items	                 A list of DropdownMenuItem widgets representing the options.
+🔹value	                 The currently selected value.
+🔹onChanged	             A callback triggered when the user selects an item.
+🔹hint	                 A widget that is displayed when no value is selected.
+🔹disabledHint	         A widget displayed when onChanged is null (Dropdown is disabled).
+🔹style	                 Defines the text style of the dropdown items.
+🔹icon	                 A custom widget to replace the default dropdown arrow.
+🔹iconSize	             The size of the dropdown arrow.
+🔹isExpanded	           If true, the dropdown takes the full width of its parent.
+🔹underline	             Defines the decoration (like an underline) for the dropdown.
+🔹dropdownColor	         The background color of the dropdown menu.
+🔹borderRadius	         Controls the roundness of the dropdown menu.
+
 
 
