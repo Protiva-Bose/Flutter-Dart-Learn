@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
 ....................................................................
 
 
-❌errir:  The method 'setState' isn't defined for the type 'MyApp'.
+❌error:  The method 'setState' isn't defined for the type 'MyApp'.
 
 ✨For this ,the solution is:
 We need to change MyApp to StatefulWidget so that we can update _uniname dynamically when the user enters text.
