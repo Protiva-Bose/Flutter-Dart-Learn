@@ -25,7 +25,6 @@
 ##### 3.TextField(TextField/TextFormField)
 ##### 4.CheckBox
 ##### 5.DropDown
-##### 6.Form
 
 ## Here void main() -> It's the first gate which give
  the permission and let go inside flutter project.
