@@ -23,7 +23,8 @@ These are widgets that can change over time.<br>
 They maintain mutable state and can trigger updates to their UI when their state changes.<br>
 Example: TextField, Checkbox, ListView, FloatingActionButton.
 
-![image](https://github.com/user-attachments/assets/767ca907-c6db-47a9-802d-894364f56bbc)
+![image](https://github.com/user-attachments/assets/36ec5926-e8a4-4be3-9ef8-37cce7de6a6a)
+
 
 ## Common Flutter Widgets
 ### Layout Widgets:
