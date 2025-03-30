@@ -112,8 +112,29 @@ Handle Errors	                         errorBuilder	                            
 Loading Indicator	                     loadingBuilder	                                  loadingBuilder: (context, child, progress) => CircularProgressIndicator()
 Apply Opacity	                         Opacity	                                        Opacity(opacity: 0.5, child: Image.asset())
 Clickable Image	                       GestureDetector	                                onTap: () { print("Clicked"); }
-
-
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 🎯 🛠️ Actions (Properties) of Icon:
 The Icon widget in Flutter is used to display material design icons. It provides various properties to control its appearance and behavior.
@@ -171,7 +192,29 @@ Change                     Size	size	                                size: 50
 Change                     Color	color	                              color: Colors.blue
 Make Clickable	           IconButton	                                onPressed: () {}
 Apply Shadow	             BoxShadow	                                BoxDecoration(boxShadow: [...])
-
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 🎯 🛠️ Actions (Properties) of Container:
@@ -253,6 +296,29 @@ Gradient Effect	        gradient	                                  LinearGradien
 Make Clickable          GestureDetector	                            onTap: () {}
 Positioning	            Transform.translate	                        offset: Offset(50,20)
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
@@ -364,6 +430,29 @@ Border Shape	           shape	                                     RoundedRectan
 Disable Button	         onPressed: null	                           onPressed: null
 Add Icon	               icon, label	                               ElevatedButton.icon(...)
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
@@ -435,6 +524,29 @@ Custom Shape	                 shape	                                        shap
 Bottom Widget	                 bottom	                                        bottom: TabBar(...)
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 🎯 🛠️ Actions (Properties) of Row,Column and Expanded:
@@ -499,6 +611,29 @@ Row(
 )
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
@@ -614,13 +749,273 @@ trailing	                Adds an icon at the end (e.g., arrow).	   trailing: Ico
 onTap	                    Defines the action when tapped.	           onTap: () { Navigator.pop(context); }
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
-🎯 🛠️ Actions (Properties) of TextField :
+🎯 🛠️ Actions (Properties) of Floating Action Button :
+✨ Key Properties of FloatingActionButton
+Property	                Description	                                                Example Usage
+onPressed	                Defines the action when the button is clicked.	            onPressed: () { print("Clicked!"); }
+child	                    The icon or widget inside the button.	                      child: Icon(Icons.add)
+backgroundColor	          Sets the background color of the FAB.	                      backgroundColor: Colors.blue
+foregroundColor	          Sets the color of the icon/text inside.	                    foregroundColor: Colors.white
+elevation	                Controls the shadow depth.	                                elevation: 6.0
+tooltip	                  Shows a tooltip when long-pressed.	                        tooltip: "Add Item"
+mini	                    Makes the FAB smaller.	                                    mini: true
+shape	                    Defines the shape of the button.	                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+heroTag	                  Identifies the FAB for animations.	                        heroTag: "fab1"
+isExtended	              Used for FloatingActionButton.extended().	                  isExtended: t
+
+
+✨ FloatingActionButton.extended() Properties:
+Property	            Description	                                    Example Usage
+label	                Displays text along with the icon.	            label: Text("Add")
+icon	                Adds an icon before the text.	                  icon: Icon(Icons.add)
+backgroundColor	      Sets the background color.	                    backgroundColor: Colors.green
+
+
+✨ Example Code of FloatingActionButton
+Scaffold(
+  appBar: AppBar(title: Text("FAB Example")),
+  floatingActionButton: FloatingActionButton(
+    onPressed: () {
+      print("FAB Clicked!");
+    },
+    child: Icon(Icons.add),
+    backgroundColor: Colors.blue,
+    tooltip: "Add Item",
+  ),
+  body: Center(child: Text("Press the Floating Action Button")),
+)
 
 
 
+ ✨ Example of FloatingActionButton.extended()
+Scaffold(
+  appBar: AppBar(title: Text("Extended FAB Example")),
+  floatingActionButton: FloatingActionButton.extended(
+    onPressed: () {
+      print("Extended FAB Clicked!");
+    },
+    label: Text("Add"),
+    icon: Icon(Icons.add),
+    backgroundColor: Colors.green,
+  ),
+)
+
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+
+🎯 🛠️ Actions (Properties) of Flutter Navigation:
+Navigation in Flutter is used to move between different screens (routes) within an app. It is managed using the Navigator widget.
+
+✨  Key Navigation Actions
+Action	                                Description	                                                                                      Example Usage
+Navigator.push()	                      Navigates to a new screen (adds to the stack).	                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewScreen()));
+Navigator.pop()	                        Goes back to the previous screen.	                                                                Navigator.pop(context);
+Navigator.pushReplacement()	            Replaces the current screen with a new one (removes the previous screen from the stack).	        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NewScreen()));
+Navigator.pushAndRemoveUntil()	        Navigates to a new screen and removes all previous routes until a condition is met.	              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NewScreen()), (route) => false);
+Navigator.canPop()	                    Checks if there's a previous screen to go back to.	                                              if (Navigator.canPop(context)) { Navigator.pop(context); }
+Navigator.popUntil()	                  Goes back to a specific screen in the navigation stack.	                                          Navigator.popUntil(context, ModalRoute.withName('/home'));
+Navigator.of(context).maybePop()	      Pops the screen only if there's one to pop.
+
+
+✨Named Route Navigation Actions:
+Action	                                   Description	                                                Example Usage
+Navigator.pushNamed()	                     Navigates using a named route.	                              Navigator.pushNamed(context, "/second");
+Navigator.pushReplacementNamed()	         Replaces the current screen with a named route.	            Navigator.pushReplacementNamed(context, "/home");
+Navigator.pushNamedAndRemoveUntil()	       Navigates to a named route and removes previous routes.	    Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+Navigator.popAndPushNamed()	               Pops the current screen and navigates to a named route.	    Navigator.popAndPushNamed(context, "/dashboard");
+
+
+✨ Example: Simple Navigation:
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => NewScreen()),
+);
+
+
+✨ Example: Passing Data Between Screens:
+Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => NewScreen(data: "Hello"),
+  ),
+);
+
+
+✨ Example: Using Named Routes:
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomeScreen(),
+      '/second': (context) => SecondScreen(),
+    },
+  ));
+}
+
+
+🗝️ Navigate to a named route:
+
+Navigator.pushNamed(context, '/second');
+
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+
+
+
+🎯 🛠️ Actions (Properties) of Stack:
+The Stack widget in Flutter is a powerful layout widget that allows you to layer widgets on top of each other, similar to how you would stack items in a pile. It is often used for creating UI elements like floating buttons over content or custom layered views.
+
+✨ Key Properties of Stack
+Property	          Description	                                                                                                           Example Usage
+alignment	          Defines how the children of the Stack should be aligned within the stack. Default is Alignment.                        center.alignment: Alignment.topLeft
+fit	                Defines how the stack should resize its children. StackFit.expand makes children expand to the size of the stack, 
+                    and StackFit.loose allows children to maintain their own size.	                                                       fit: StackFit.expand
+clipBehavior	      Determines how the stack clips its children. You can use Clip.none,
+                    Clip.hardEdge, and Clip.antiAlias for various clipping behaviors.	                                                     clipBehavior: Clip.hardEdge
+children	          A list of widgets that will be placed on top of each other in the stack.	                                             children: [widget1, widget2]
+
+
+✨ Key Actions in Stack:
+Action	                   Description	                                                                Example Usage
+Positioned	               A special widget used inside a Stack to position a 
+                           child at a specific location (top, left, right, bottom).	                    Positioned(top: 50, left: 20, child: MyWidget())
+Visibility	               Used to make a widget visible or hidden within a Stack.	                    Visibility(visible: true, child: Positioned(...))
+Align	                     Aligns the child widget within the Stack according to a certain alignment.	  Align(alignment: Alignment.bottomRight, child: widget)
+Opacity	                   Controls the opacity of the widget.	                                        Opacity(opacity: 0.5, child: Positioned(...))
+
+
+✨ Example: Stack with Visibility and Opacity:
+Stack(
+  children: [
+    Container(
+      color: Colors.orange,
+      width: 200,
+      height: 200,
+    ),
+    Visibility(
+      visible: false,
+      child: Positioned(
+        top: 50,
+        left: 50,
+        child: Container(
+          color: Colors.white,
+          width: 100,
+          height: 100,
+        ),
+      ),
+    ),
+    Opacity(
+      opacity: 0.5,
+      child: Positioned(
+        top: 10,
+        left: 10,
+        child: Container(
+          color: Colors.red,
+          width: 100,
+          height: 100,
+        ),
+      ),
+    ),
+  ],
+)
+
+
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
@@ -1262,6 +1657,30 @@ Cannot perform actions like clearing the field programmatically or retrieving te
 
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
 
 
 
@@ -1282,6 +1701,29 @@ Default                Layout	Just a small interactive box.	                    
 ✨Use Checkbox when you only need a simple checkbox without text.
 ✨Use CheckboxListTile when you need a labeled checkbox for better user experience.
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 🎯 🛠️ Actions (Properties) of RadioButton() /RadioListTile() /CustomRadioWidget() :
@@ -1324,6 +1766,29 @@ Property	Description
 🔹controlAffinity	          Positioning of the radio button (leading, trailing).
 
 
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
 
 
 
