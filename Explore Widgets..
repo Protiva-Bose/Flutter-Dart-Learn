@@ -1,16 +1,520 @@
+🎯 🛠️ Actions (Properties) of Image(Assett/Network):
+In Flutter, the Image widget is used to display images from various sources like assets (local) or network (online). 
+It comes with multiple properties to customize the display, size, and behavior of images.
+
+✨ Common Properties of Image Widget:
+Property	                           Description	                                                        Example
+image	                               Defines the image source (Asset/Network)	                            AssetImage('assets/image.png')
+width	                               Sets the width of the image	                                        width: 200
+height	                             Sets the height of the image	                                        height: 150
+fit	                                 Controls how the image fits inside its container	                    BoxFit.cover
+alignment	                           Aligns the image within its box	                                    Alignment.center
+repeat	                             Defines how the image repeats (if smaller than its container)	      ImageRepeat.repeat
+color	                               Applies a color filter to the image	                                Colors.blue.withOpacity(0.5)
+colorBlendMode	                     Defines how the color filter is applied	                            BlendMode.colorBurn
+loadingBuilder	                     Displays a loading indicator while the image loads	                  CircularProgressIndicator()
+errorBuilder	                       Shows an alternative widget when the image fails to load	            Icon(Icons.error)
+
+
+✨ Loading Image from Different Sources
+1️⃣ Load Image from Assets (Local)
+Image.asset(
+  'assets/images/sample.png',
+  width: 200,
+  height: 200,
+  fit: BoxFit.cover,
+)
+
+
+✔ Requires adding the image path in pubspec.yaml
+flutter:
+  assets:
+    - assets/images/sample.png
+
+
+2️⃣ Load Image from Network
+Image.network(
+  'https://example.com/sample.jpg',
+  width: 300,
+  height: 200,
+  fit: BoxFit.cover,
+)
+
+✔ Requires Internet Permission in Android (AndroidManifest.xml):
+<uses-permission android:name="android.permission.INTERNET"/>
+
+
+
+✨ Handling Image Loading & Errors
+1️⃣ Show a Loading Indicator while Image Loads
+Image.network(
+  'https://example.com/sample.jpg',
+  loadingBuilder: (context, child, loadingProgress) {
+    if (loadingProgress == null) return child;
+    return Center(child: CircularProgressIndicator());
+  },
+)
+
+2️⃣ Show an Error Widget if the Image Fails to Load
+Image.network(
+  'https://example.com/invalid.jpg',
+  errorBuilder: (context, error, stackTrace) {
+    return Icon(Icons.error, size: 50, color: Colors.red);
+  },
+)
+
+
+
+✨ Applying Effects & Transformations
+
+1️⃣ Add Rounded Borders to an Image
+ClipRRect(
+  borderRadius: BorderRadius.circular(20),
+  child: Image.asset('assets/sample.png'),
+)
+
+
+2️⃣ Apply a Color Filter to an Image
+ColorFiltered(
+  colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn),
+  child: Image.asset('assets/sample.png'),
+)
+
+
+3️⃣ Make Image Clickable (Tap Action)
+GestureDetector(
+  onTap: () {
+    print("Image Clicked!");
+  },
+  child: Image.asset('assets/sample.png'),
+)
+
+
+4️⃣ Display an Image with Text Overlay
+Stack(
+  children: [
+    Image.asset('assets/sample.png'),
+    Positioned(
+      bottom: 10,
+      left: 10,
+      child: Text("Flutter Image", style: TextStyle(color: Colors.white)),
+    ),
+  ],
+)
+
+
+✨ Summary
+Feature	                               Property/Method	                                Example
+Display Local Image	                   Image.asset()	                                  Image.asset('assets/sample.png')
+Display Online Image	                 Image.network()	                                Image.network('https://example.com')
+Resize & Fit	                         fit: BoxFit.cover	                              fit: BoxFit.contain
+Handle Errors	                         errorBuilder	                                    errorBuilder: (context, error, stackTrace) => Icon(Icons.error)
+Loading Indicator	                     loadingBuilder	                                  loadingBuilder: (context, child, progress) => CircularProgressIndicator()
+Apply Opacity	                         Opacity	                                        Opacity(opacity: 0.5, child: Image.asset())
+Clickable Image	                       GestureDetector	                                onTap: () { print("Clicked"); }
+
+
+
+🎯 🛠️ Actions (Properties) of Icon:
+The Icon widget in Flutter is used to display material design icons. It provides various properties to control its appearance and behavior.
+
+✨ Common Properties of Icon:
+Property	                                Description	                                Example Usage
+icon	                                    Defines the icon to display.	              Icons.home, Icons.star
+size	                                    Sets the size of the icon.	                size: 50
+color	                                    Changes the color of the icon.	            color: Colors.blue
+semanticLabel	                            Provides a description for accessibility.	  "Home Icon"
+
+✨  Wrapping Icon with IconButton
+To make the icon interactive, use IconButton:
+IconButton(
+  icon: Icon(Icons.add),
+  onPressed: () {
+    print("Button Pressed!");
+  },
+)
+
+
+✨ Applying Shadows & Effects
+To apply effects, wrap Icon in a Container:
+Container(
+  decoration: BoxDecoration(
+    shape: BoxShape.circle,
+    boxShadow: [
+      BoxShadow(color: Colors.black26, blurRadius: 5, spreadRadius: 2),
+    ],
+  ),
+  child: Icon(Icons.favorite, size: 50, color: Colors.red),
+)
+
+
+✨ Customizing Icons with Transform
+Rotate or scale the icon:
+Transform.rotate(
+  angle: 0.5, // Rotate in radians
+  child: Icon(Icons.refresh, size: 50),
+)
+
+
+✨ Animating Icons
+Use AnimatedSwitcher for smooth transitions:
+AnimatedSwitcher(
+  duration: Duration(seconds: 1),
+  child: Icon(Icons.favorite, key: ValueKey(Icons.favorite), size: 50, color: Colors.red),
+)
+
+
+✨ Summary
+Feature	                   Property/Method	                          Example
+Set Icon	                 Icons.home	                                Icon(Icons.home)
+Change                     Size	size	                                size: 50
+Change                     Color	color	                              color: Colors.blue
+Make Clickable	           IconButton	                                onPressed: () {}
+Apply Shadow	             BoxShadow	                                BoxDecoration(boxShadow: [...])
+
+
+
+🎯 🛠️ Actions (Properties) of Container:
+The Container widget in Flutter is a versatile box that can hold other widgets. It provides layout, styling, positioning, and interaction options.
+
+✨ Common Properties of Container
+Property	                Description	                                   Example Usage
+width	                    Sets the width of the container.	             width: 200
+height                    Sets the height of the container.	             height: 100
+color	                    Background color of the container.	           color: Colors.blue
+alignment	                Aligns child inside the container.	           alignment: Alignment.center
+margin	                  Adds space outside the container.	             margin: EdgeInsets.all(10)
+padding	                  Adds space inside the container.	             padding: EdgeInsets.all(15)
+decoration	              Adds border, shadow, gradient, etc.	           BoxDecoration(...)
+constraints	              Defines min/max size of the container.	       BoxConstraints(minWidth: 100, maxWidth: 300)
+child	                    Holds a single widget inside the container.	   child: Text("Hello")
+
+
+✨ Applying Border, Radius & Shadow:
+Container(
+  width: 200,
+  height: 100,
+  decoration: BoxDecoration(
+    color: Colors.blue,
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: [
+      BoxShadow(color: Colors.black26, blurRadius: 5, spreadRadius: 2),
+    ],
+  ),
+)
+
+✨ Gradient Background:
+Container(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Colors.blue, Colors.purple],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+  ),
+)
+
+✨  Making Container Clickable
+GestureDetector(
+  onTap: () {
+    print("Container Clicked!");
+  },
+  child: Container(
+    width: 200,
+    height: 100,
+    color: Colors.orange,
+    child: Center(child: Text("Click Me")),
+  ),
+)
+
+✨ Controlling Position (Using Transform):
+Transform.translate(
+  offset: Offset(50, 20), // Moves container
+  child: Container(width: 100, height: 50, color: Colors.red),
+)
+
+✨  Rounded Image Inside a Container:
+Container(
+  width: 100,
+  height: 100,
+  decoration: BoxDecoration(
+    shape: BoxShape.circle,
+    image: DecorationImage(image: AssetImage('assets/profile.jpg'), fit: BoxFit.cover),
+  ),
+)
+
+✨Summary
+Feature	                Property/Method	                            Example
+Set Size	              width, height	                              width: 200, height: 100
+Background              Color	color	                                color: Colors.blue
+Padding & Margin	      padding, margin	                            padding: EdgeInsets.all(10)
+Border & Shadow	        BoxDecoration	                              BoxDecoration(border: ...)
+Gradient Effect	        gradient	                                  LinearGradient(colors: [...])
+Make Clickable          GestureDetector	                            onTap: () {}
+Positioning	            Transform.translate	                        offset: Offset(50,20)
+
+
+
+
+🎯 🛠️ Actions (Properties) of Button:
+Flutter provides several types of buttons, such as ElevatedButton, TextButton, OutlinedButton, and more. Each has properties to control appearance, behavior, and interactions.
+
+✨ Common Properties of Buttons:
+Property	                       Description	                                                         Example Usage
+onPressed	                       Defines what happens when the button is clicked.	                     onPressed: () { print("Clicked!"); }
+onLongPress	                     Defines action for a long press.	                                     onLongPress: () { print("Long Pressed!"); }
+child	                           Defines the content inside the button.	                               child: Text("Click Me")
+style	                           Customizes button design (color, shape, elevation, etc.).	           style: ButtonStyle(...)
+icon	                           Used in IconButton for showing an icon.	                             icon: Icon(Icons.add)
+
+✨ Types of Buttons in Flutter
+Flutter offers different buttons based on design needs:
+
+1️⃣ ElevatedButton (Raised Button)
+Used for high-emphasis actions.
+
+Has a shadow/elevation effect.
+Code:
+ElevatedButton(
+  onPressed: () { print("Elevated Button Clicked!"); },
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.blue,
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  ),
+  child: Text("Click Me", style: TextStyle(color: Colors.white)),
+)
+
+
+2️⃣ TextButton (Flat Button)
+Used for low-emphasis actions.
+
+No elevation, just plain text.
+Code:
+TextButton(
+  onPressed: () { print("Text Button Clicked!"); },
+  child: Text("Click Me", style: TextStyle(color: Colors.blue)),
+)
+
+
+3️⃣ OutlinedButton
+Similar to TextButton but has a border.
+Code:
+OutlinedButton(
+  onPressed: () { print("Outlined Button Clicked!"); },
+  style: OutlinedButton.styleFrom(
+    side: BorderSide(color: Colors.blue, width: 2),
+  ),
+  child: Text("Click Me"),
+)
+
+
+4️⃣ IconButton
+Used for buttons with only an icon (like "back" or "add" icons).
+Code:
+IconButton(
+  onPressed: () { print("Icon Button Clicked!"); },
+  icon: Icon(Icons.thumb_up, color: Colors.blue, size: 30),
+)
+
+
+✨ Customizing Button Styles
+ Example: Fully Styled Button:
+
+ElevatedButton(
+  onPressed: () { print("Styled Button Clicked!"); },
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.green, 
+    foregroundColor: Colors.white, 
+    elevation: 5, 
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+  ),
+  child: Text("Styled Button"),
+)
+
+
+✨ Disable a Button
+A button can be disabled by setting onPressed: null.
+Code:
+ElevatedButton(
+  onPressed: null, // Button is disabled
+  child: Text("Disabled Button"),
+)
+
+
+✨ Button with an Icon
+Combine an icon and text inside a button.
+Code:
+ElevatedButton.icon(
+  onPressed: () { print("Button with Icon Clicked!"); },
+  icon: Icon(Icons.send, color: Colors.white),
+  label: Text("Send"),
+  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+)
+
+✨ Summary Table
+Feature	                 Property/Method	                           Example
+Click Action	           onPressed	                                 onPressed: () {}
+Long Press	             onLongPress	                               onLongPress: () {}
+Text Inside	             child	                                     child: Text("Click Me")
+Button Color	           style: ButtonStyle	                         backgroundColor: Colors.blue
+Border Shape	           shape	                                     RoundedRectangleBorder(...)
+Disable Button	         onPressed: null	                           onPressed: null
+Add Icon	               icon, label	                               ElevatedButton.icon(...)
+
+
+
+
+🎯 🛠️ Actions (Properties) of AppBar:
+The AppBar is a material design widget that appears at the top of the screen and provides navigation, branding, and actions for an app. It is typically used inside a Scaffold.
+
+✨ Common Properties of AppBar
+Property	                            Description	                                                                           Example Usage
+title	                                Displays the title text in the center/left.	                                           title: Text("My App")
+leading	                              Widget placed at the start (left) of the AppBar (e.g., Back button, Drawer icon).	     leading: Icon(Icons.menu)
+actions	                              List of widgets placed at the end (right) of the AppBar (e.g., search, settings).	     actions: [Icon(Icons.search)]
+backgroundColor	                      Sets the background color of the AppBar.	                                             backgroundColor: Colors.blue
+elevation	                            Adds shadow depth effect to AppBar.	                                                   elevation: 4.0
+centerTitle	                          Centers the title text (true or false).	                                               centerTitle: true
+flexibleSpace	                        Adds a custom flexible background (e.g., gradient, image).	                           flexibleSpace: Container(...)
+shadowColor	                          Color of the shadow (used with elevation).	                                           shadowColor: Colors.grey
+toolbarHeight	                        Custom height of the AppBar.	                                                         toolbarHeight: 80.0
+shape	                                Customizes the AppBar border shape.	                                                   shape: RoundedRectangleBorder(...)
+bottom	                              Adds a bottom widget (e.g., TabBar).	                                                 bottom: PreferredSize(...)
+
+✨ AppBar with a Leading Icon
+AppBar(
+  title: Text("Home"),
+  leading: IconButton(
+    icon: Icon(Icons.menu),
+    onPressed: () { print("Menu Clicked"); },
+  ),
+)
+
+
+✨ AppBar with Actions (Search & Settings)
+AppBar(
+  title: Text("Dashboard"),
+  actions: [
+    IconButton(
+      icon: Icon(Icons.search),
+      onPressed: () { print("Search Clicked"); },
+    ),
+    IconButton(
+      icon: Icon(Icons.settings),
+      onPressed: () { print("Settings Clicked"); },
+    ),
+  ],
+)
+
+
+✨ AppBar with Bottom TabBar
+AppBar(
+  title: Text("Tabbed AppBar"),
+  bottom: TabBar(
+    tabs: [
+      Tab(icon: Icon(Icons.home), text: "Home"),
+      Tab(icon: Icon(Icons.person), text: "Profile"),
+    ],
+  ),
+)
+
+
+✨ Summary Table
+Feature	                       Property/Method	                              Example
+Title	                         title	                                        title: Text("My App")
+Leading Icon	                 leading	                                      leading: Icon(Icons.menu)
+Actions	                       actions	                                      actions: [Icon(Icons.search)]
+Background	                   backgroundColor	                              backgroundColor: Colors.blue
+Elevation	                     elevation	                                    elevation: 4.0
+Shadow Color	                 shadowColor	                                  shadowColor: Colors.grey
+Center Title	                 centerTitle	                                  centerTitle: true
+Custom Shape	                 shape	                                        shape: RoundedRectangleBorder(...)
+Bottom Widget	                 bottom	                                        bottom: TabBar(...)
+
+
+
+
+🎯 🛠️ Actions (Properties) of Row,Column and Expanded:
+These are fundamental layout widgets in Flutter used to arrange child widgets horizontally (Row), vertically (Column), and distribute space efficiently (Expanded).
+
+✨ Properties of Row:
+Property	             Description	                                                  Example Usage
+children	             A list of widgets inside the Row.	                            children: [Text("A"), Icon(Icons.star)]
+mainAxisAlignment	     Aligns children horizontally along the main axis.	            mainAxisAlignment: MainAxisAlignment.center
+crossAxisAlignment	   Aligns children vertically (opposite to main axis).	          crossAxisAlignment: CrossAxisAlignment.start
+mainAxisSize	         Defines the space the Row takes (min or max).	                mainAxisSize: MainAxisSize.max
+textDirection	         Defines text layout (ltr or rtl).	                            textDirection: TextDirection.ltr
+
+Example:
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Icon(Icons.star, size: 30),
+    Text("Hello", style: TextStyle(fontSize: 20)),
+    Icon(Icons.favorite, size: 30),
+  ],
+)
+
+
+✨ Properties of Column:
+Property	               Description                                        	           Example Usage
+children	               A list of widgets inside the Column.	                           children: [Text("Item 1"), Text("Item 2")]
+mainAxisAlignment      	 Aligns children vertically.	                                   mainAxisAlignment: MainAxisAlignment.center
+crossAxisAlignment	     Aligns children horizontally.	                                 crossAxisAlignment: CrossAxisAlignment.start
+mainAxisSize	           Defines space the Column takes (min or max).	                   mainAxisSize: MainAxisSize.min
+textBaseline	           Aligns text based on baseline (alphabetic, ideographic).	       textBaseline: TextBaseline.alphabetic
+
+Example:
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text("Welcome", style: TextStyle(fontSize: 22)),
+    Icon(Icons.home, size: 30),
+    Text("Flutter Column Example"),
+  ],
+)
+
+✨ Properties of Expanded
+Property	                 Description	                                             Example Usage
+child	                     The widget inside Expanded.	                             child: Container(color: Colors.red)
+flex	                     Defines space ratio among multiple Expanded widgets.	     flex: 2
+
+Example:
+Row(
+  children: [
+    Expanded(
+      flex: 2,
+      child: Container(color: Colors.blue, height: 50),
+    ),
+    Expanded(
+      flex: 1,
+      child: Container(color: Colors.red, height: 50),
+    ),
+  ],
+)
+
+
+
+
+
 🎯 🛠️ Actions (Properties) of ListView
 These properties modify the behavior and appearance of a ListView:
 
-✨Property	Description:
-🗝️itemExtent	:Sets a fixed height/width for list items, improving performance.
-🗝️reverse	:If true, the list starts from the bottom and scrolls up. Default is false (top to bottom).
-🗝️scrollDirection	:Defines scroll direction: Axis.vertical (default) or Axis.horizontal.
-🗝️shrinkWrap	:If true, ListView takes only required space instead of filling the screen. Useful inside another scrollable widget.
-🗝️physics	:Controls scrolling behavior (e.g., disable scrolling with NeverScrollableScrollPhysics()).
-🗝️primary	:If true, this ListView is the primary scroll view.
-🗝️cacheExtent	:Preloads items beyond the visible area for smoother scrolling.
-🗝️padding	:Adds space inside the ListView.
-🗝️controller	:Used for programmatic scrolling and listening to scroll events.
+✨Property	          Description:
+🗝️itemExtent:        Sets a fixed height/width for list items, improving performance.
+🗝️reverse	:          If true, the list starts from the bottom and scrolls up. Default is false (top to bottom).
+🗝️scrollDirection	:  Defines scroll direction: Axis.vertical (default) or Axis.horizontal.
+🗝️shrinkWrap	:      If true, ListView takes only required space instead of filling the screen. Useful inside another scrollable widget.
+🗝️physics	:          Controls scrolling behavior (e.g., disable scrolling with NeverScrollableScrollPhysics()).
+🗝️primary	:          If true, this ListView is the primary scroll view.
+🗝️cacheExtent	:      Preloads items beyond the visible area for smoother scrolling.
+🗝️padding	:          Adds space inside the ListView.
+🗝️controller:        Used for programmatic scrolling and listening to scroll events.
 
 Ex:
 🎯
