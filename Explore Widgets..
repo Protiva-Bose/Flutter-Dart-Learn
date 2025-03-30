@@ -587,6 +587,44 @@ Ex:
 );
 
 
+
+
+🎯 🛠️ Actions (Properties) of Navigation  drawer:
+✨  Key Properties of Drawer Widget:
+Property	               Description	                                                 Example Usage
+child	                   The main content of the drawer. Usually a ListView.	         child: ListView(children: [...])
+backgroundColor	         Sets the drawer's background color.	                         backgroundColor: Colors.blue
+elevation	               Adds a shadow effect to the drawer.	                         elevation: 16.0
+width	                   Defines the width of the drawer.	                             width: 250.0
+
+
+✨ Key Properties of DrawerHeader (Optional):
+Property	           Description	                                                  Example Usage
+decoration	         Adds background color or image to the header.	                decoration: BoxDecoration(color: Colors.blue)
+margin	             Sets the margin around the header.             	              margin: EdgeInsets.zero
+child	               Contains widgets inside the header (Text, Image, etc.).	      child: Text("My App")
+
+
+ ✨ Key Properties of ListTile (Menu Items in Drawer):
+Property	                Description	                               Example Usage
+leading	                  Adds an icon before the title.	           leading: Icon(Icons.home)
+title	                    The main text of the menu item.	           title: Text("Home")
+subtitle	                A smaller text under the title.	           subtitle: Text("Go to home")
+trailing	                Adds an icon at the end (e.g., arrow).	   trailing: Icon(Icons.arrow_forward)
+onTap	                    Defines the action when tapped.	           onTap: () { Navigator.pop(context); }
+
+
+
+
+
+🎯 🛠️ Actions (Properties) of TextField :
+
+
+
+
+
+
+
 🎯 🛠️ Actions (Properties) of TextField :
 TextField Properties: 
 
@@ -1227,7 +1265,7 @@ Cannot perform actions like clearing the field programmatically or retrieving te
 
 
 
-🎯✨ CheckBox and CheckBoxListTile:
+🎯 🛠️ Actions (Properties) of CheckBox and CheckBoxListTile:
 
 Difference Between Checkbox and CheckboxListTile in Flutter
 Both Checkbox and CheckboxListTile are used to create checkboxes in Flutter, but they have different use cases and functionalities.
@@ -1246,7 +1284,7 @@ Default                Layout	Just a small interactive box.	                    
 
 
 
-🎯✨ RadioButton() /RadioListTile() /CustomRadioWidget() :
+🎯 🛠️ Actions (Properties) of RadioButton() /RadioListTile() /CustomRadioWidget() :
 1️⃣ Radio<T> Widget
 The Radio widget is a simple radio button that allows users to select one option from a group.
 
@@ -1289,7 +1327,7 @@ Property	Description
 
 
 
-🎯✨DropDown button:
+🎯 🛠️ Actions (Properties) of DropDown button:
 🔹 Properties of DropdownButton
 🔹Property	             Description
 🔹items	                 A list of DropdownMenuItem widgets representing the options.
