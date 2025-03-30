@@ -5,26 +5,75 @@
 3.Install Flutter and Dart plugins.<br>
 4.agree to all Licenses.<br>
 
+## What Are Flutter Widgets?
+In Flutter, widgets are the basic building blocks of the app's user interface (UI). They represent everything you see on the screen, from text and images to buttons, layout structures, and even interactive elements like forms and animations.
+
+In simpler terms, everything you see in a Flutter app is a widget. They are immutable, which means once a widget is created, it cannot be changed. If you need to change something, Flutter will create a new widget, update the old one, and re-render the UI.
+
+### Types of Flutter Widgets
+#### Stateless Widgets
+These are widgets that do not change during the lifetime of the app.<br>
+They are static and are rendered once.<br>
+Example: Text, Icon, Container without state changes.
+
+![image](https://github.com/user-attachments/assets/eadce2a4-1336-4f31-9d9a-65e61d5766f1)
+
+#### Stateful Widgets
+These are widgets that can change over time.<br>
+They maintain mutable state and can trigger updates to their UI when their state changes.<br>
+Example: TextField, Checkbox, ListView, FloatingActionButton.
+
+![image](https://github.com/user-attachments/assets/767ca907-c6db-47a9-802d-894364f56bbc)
+
+## Common Flutter Widgets
+### Layout Widgets:
+Container: Used for creating simple layouts with decorations like padding, margins, etc.<br>
+Row: Displays children widgets horizontally.<br>
+Column: Displays children widgets vertically.<br>
+Stack: Positions widgets on top of each other.<br>
+Expanded: Expands a child widget to fill available space in a Row, Column, or Flex.<br>
+
+### Input Widgets:
+TextField: For text input.<br>
+Form: Grouping of form fields like TextFormField.<br>
+Checkbox: For boolean input (checked or unchecked).<br>
+Switch: For toggling between two states.<br>
+
+### Interactive Widgets:
+ElevatedButton: A Material Design button that is raised above the UI.<br>
+IconButton: Button with an icon.<br>
+GestureDetector: Detects gestures like taps, swipes, etc.<br>
+
+### Styling Widgets:
+Text: Displays a string of text with style.<br>
+Image: Displays an image from a file or network.<br>
+Icon: Displays a Material Design icon.<br>
+
+### Utility Widgets:
+FutureBuilder: Used to display data from asynchronous operations (like fetching data from the internet).<br>
+StreamBuilder: Similar to FutureBuilder, but for stream-based data.<br>
+AlertDialog: Displays a dialog box.<br>
+
 ## There are two types of widgets:
 #### 1.Stateless widget:
-##### Image(Asset/Network)
-##### Icon(Material/FontAwesome)
-##### Container
-##### Button(Elavated/Outline)
-##### AppBar(Action Buttons)
-##### Row,Column,Expanded
-##### ListView
-##### ListView.builder()
-##### Navigation drawer
-##### Floating Action Button
-##### Stack
+##### i)Image(Asset/Network)
+##### ii)Icon(Material/FontAwesome)
+##### iii)Container
+##### iv)Button(Elavated/Outline)
+##### v)AppBar(Action Buttons)
+##### vi)Row,Column,Expanded
+##### vii)ListView
+##### viii)ListView.builder()
+##### ix)Navigation drawer
+##### x)Floating Action Button
+##### xi)Stack<br>
 
 #### 2.Stateful widget:
-##### 1.Flutter navigation
-##### 2.Radio Button
-##### 3.TextField(TextField/TextFormField)
-##### 4.CheckBox
-##### 5.DropDown
+##### i.Flutter navigation
+##### ii.Radio Button
+##### iii.TextField(TextField/TextFormField)
+##### iv.CheckBox
+##### v.DropDown
 
 ## Here void main() -> It's the first gate which give
  the permission and let go inside flutter project.
